@@ -86,15 +86,13 @@
 
             <ol class="questtions-wrapper">
 
-               <%  questions.forEach((question) => { %>
+              <% questions.forEach((question, index) => { %>
                 <div class="question-div">
-                  
-
-     
-              <li class="question">
-                <span id="math-field" data-val="<%= question.question %>"><%= question.question %></span>
-              </li>
-              <div id="id"></div>
+                  <li class="question">
+                    <span class="math-field" data-val="<%= question.question %>"><%= question.question %></span>
+                  </li>
+                  <div id="id-<%= index %>"></div>
+       
 
                   
          

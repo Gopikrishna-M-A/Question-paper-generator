@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/nav-footer.css">
+    <title>Document</title>
+</head>
+<body>
+
+        <style>
+            body{
+                padding: 30px;
+            }
+        .math-field{
+            border: none;
+            width: 100%;
+        }
+        .mq-root-block{
+            width: 100%;
+            display: flex !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+        }
+     
+        </style>
+
+<nav>
+
+    <a href="/" class="logo">
+        <h1>lOGO</h1>
+    </a>
+    <ul class="nav-links">
+        <li><a href="/add-questions">ADD QUESTION</a></li>
+        <li><a href="/about">ABOUT US</a></li>
+        <li><a href="/Database">DATABASE</a></li>
+    </ul>
+
+</nav>
+
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Question</th>
+            <th scope="col">Section</th>
+            <th scope="col">Dlevel</th>
+            <th scope="col">Clevel</th>
+            <th scope="col">Mark</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% questions.forEach(function(question, index) { %>
+                <tr>
+                  <th scope="row"><%= index + 1 %></th>
+                  <td>
+                    <span class="math-field" data-val="<%= question.question %>"><%= question.question %></span>
+                  </td>
+                  <td><%= question.section %></td>
+                  <td><%= question.Dlevel %></td>
+                  <td><%= question.Clevel %></td>
+                  <td><%= question.mark %></td>
+                </tr>
+              <% }) %>
+        </tbody>
+      </table>
+      
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.min.js"></script>
+      <!-- <script src="/javascript/pdf.js"></script> -->
+      <script src="/javascript/latex.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

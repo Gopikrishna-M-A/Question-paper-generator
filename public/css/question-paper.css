@@ -236,23 +236,17 @@ body{
 .question-div{
     width: 100%;
 }
-#math-field{
+.math-field{
     border: none;
     width: 100%;
 }
 .mq-root-block{
     width: 100%;
     display: flex !important;
+    align-items: center !important;
     flex-wrap: wrap !important;
 }
-.mq-root-block var{
-    white-space: nowrap;
-}
-.math-content {
-    overflow-wrap: anywhere;
-    word-break: break-word;
-    white-space: pre-wrap;
-  }
+
 table {
     border-collapse: collapse;
     width: 100%;

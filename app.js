@@ -371,6 +371,16 @@ const Paper = new mongoose.model('Paper',paperSchema)
     })
 
 
+    app.get("/database",(req,res)=>{
+          Question.find()
+      .then(questions => {
+        console.log("questions",questions);
+        res.render("database",{questions})
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    })
 
 
 
