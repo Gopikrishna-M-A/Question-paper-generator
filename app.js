@@ -221,6 +221,7 @@ const Paper = new mongoose.model('Paper',paperSchema)
             
                   if (filteredQuestions.length === 0) {
                     console.log('No matching questions found.');
+                    res.send("No matching questions found.")
                     return;
                   }
             
@@ -371,17 +372,17 @@ const Paper = new mongoose.model('Paper',paperSchema)
     })
 
 
-    app.get("/database",(req,res)=>{
-          Question.find()
-      .then(questions => {
-        console.log("questions",questions);
-        res.render("database",{questions})
-      })
-      .catch(error => {
-        console.error(error);
-      });
-    })
-
+    app.get("/database", (req, res) => {
+      Question.find()
+        .sort({ section: 1 }) // Sort by section number in ascending order (change to -1 for descending order)
+        .then(questions => {
+          console.log("questions", questions);
+          res.render("database", { questions });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    });
 
 
 app.get("/verify",(req,res)=>{
