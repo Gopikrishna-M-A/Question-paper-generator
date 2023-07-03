@@ -6,9 +6,8 @@ const bcrypt = require('bcrypt');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
-// const fileUpload= require("express-fileupload");
+require('dotenv').config();
 
-// const saltRounds = 10;
 
 const app = express()
 
@@ -27,8 +26,18 @@ const storage = multer.diskStorage({
 
 
 
+
+
+  const PORT = process.env.PORT;
+  const Pass_Key = process.env.PASS_KEY;
+  const user_id = process.env.USER_ID;
+  
+  
+  
+  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+
 mongoose.set("strictQuery", false);
-mongoose.connect('mongodb://127.0.0.1:27017/Questions', { useNewUrlParser: true });
+mongoose.connect(URL, { useNewUrlParser: true });
 
 app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs')  
@@ -384,7 +393,7 @@ app.post("/verify",(req,res)=>{
 })
 
 
-app.listen(3000,(err)=>{
+app.listen(PORT||3000,(err)=>{
     if(err)
         console.log("err");
     else
