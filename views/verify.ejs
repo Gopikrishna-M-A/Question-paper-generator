@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/verify.css">
+    <title>Document</title>
+</head>
+<body>
+
+<form class="verification" method="post" action="/verify">
+  <section class="verification__wrap">
+    <header class="verification__header">
+      <h2 class="verification__title">Verification Code</h2>
+      <p class="verification__description">
+        enter the 4 length verification code
+      </p>
+    </header>
+
+    <section class="verification__fields">
+      <fieldset class="verification__field">
+        <input name="digit1" type="text" class="verification__input verification__input--1"  placeholder="-" maxlength="1" />
+        <input name="digit2" type="text" class="verification__input verification__input--2"  placeholder="-" maxlength="1" />
+        <input name="digit3" type="text" class="verification__input verification__input--3"  placeholder="-" maxlength="1" />
+        <input name="digit4" type="text" class="verification__input verification__input--4"  placeholder="-" maxlength="1" />
+      </fieldset>
+    </section>
+
+    <section class="verification__verify">
+      <p>
+        <button type="submit" class="verification__verify_btn">VERIFY</button>
+      </p>
+    </section>
+
+  </section>
+</form>
+
+    
+</body>
+</html>

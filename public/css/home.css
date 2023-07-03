@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+
+/* 
+    Primary: #07051f (RGB: 7, 5, 31)
+    Secondary: #efedfc (RGB: 239, 237, 252)
+    Primary Button: #a69ef0 (RGB: 166, 158, 240)
+    Secondary Button: #dfdcf9 (RGB: 223, 220, 249)
+    Accent: #bab4f3 (RGB: 186, 180, 243)
+
+*/
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* border: 1px solid green; */
+    color: #3a3665;
+
+}
+
+.hide{
+    display: none;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(17, 6, 48);
+}
+body{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+    background-color: #efedfc;
+    background-image: url('/images/bg.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 200px;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.logo{
+    width: 100px;
+}
+.logo h1{
+    color: #07051f;
+    cursor: pointer;
+}
+.accent{
+    color: #a69ef0;
+
+}
+.nav-links{
+    width: 60%;
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    gap: 70px;
+    align-items: center;
+}
+.nav-links li{
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    text-align: end;
+    cursor: pointer;    
+}
+.nav-links li a{
+    white-space: nowrap; 
+}
+
+
+.container{
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.action-btn{
+    margin-top: 20px;
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    width: 80vw;
+    max-width: 250px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #a69ef0;
+    padding: 10px 20px;
+    border-radius: 10px;
+}
+.action-btn span{
+    color: #07051f;
+}
+
+.hero-text{
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.title.large{
+    font-weight: 500;
+    font-size: 50px;
+
+}
+.title.small{
+    font-weight: 200;
+    font-size: 15px;
+    width: 70%;
+    line-height: 25px;
+    color: rgb(43, 43, 43);
+    
+}
+.img-wrapper{
+    width: 50%;
+    aspect-ratio: 2/1;
+}
+.img-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.text{
+    color: rgb(17, 6, 48);
+    cursor: pointer;
+}
+
+
+
+
+
+footer{
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
+}
+.nav-buttons{
+    display: flex;
+    gap:7px;
+}
+.nav-btn{
+    width: 13px;
+    height: 13px;
+    border: 1px solid #a69ef0;
+    border-radius: 50%;
+}
+.nav-btn:first-child{
+    background-color: #a69ef0;
+}
+
+
+
+
+/* hover */
+.action-btn:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 25px 20px -20px #bab4f3;
+}
+li:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 25px 20px -20px #bab4f3;
+}
+.nav-btn:hover{
+    background-color: #a69ef0;
+    cursor: pointer;
+}
+
+/* .text:hover{
+    font-weight: 500;
+    cursor: pointer;
+    text-shadow: 2px 2px 5px rgba(200, 200, 200, 0.45);
+} */
+
+
+
+.hide-sm{
+    display: none;
+}
+
+
+
+
+@media (width<1200px) {
+    
+}
+
+@media (width<992px) {
+
+}
+
+@media (width<768px) {
+ 
+}
+
+@media (width<576px) {
+body{
+    height: 100%;
+    display: block;
+    overflow: auto;
+    background-image: url('/images/bg.svg');
+    background-repeat: no-repeat;
+    background-color: #dedcf9;
+    background-size: cover;
+    padding: 10px 10px 10px 10px;
+}
+    footer{
+        display: none;
+    }
+    .hide-lg{
+        display: none;
+    }
+
+    .hide-sm{
+        display: block;
+    }
+    .nav-links{
+        width: 50%;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        gap:20px;
+    }
+    .nav-links li{
+        font-weight: 500;
+        text-align: end;
+        /* width: ; */
+        transition: all .2s ease-in-out;
+        text-align: end;
+        cursor: pointer;
+    }
+    i{
+        font-size: 20px;
+        color: #4b4585;
+    }
+    .hero-text{
+        width: 100%;
+    }
+    li:hover{
+        transform: translateY(-5px);
+        box-shadow: 0px 25px 20px -20px #bab4f3;
+    }
+    .title.large {
+        font-size: 40px;
+    }
+
+
+}

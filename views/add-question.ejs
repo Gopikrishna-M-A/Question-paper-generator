@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
+    
+    
+    <link rel="stylesheet" href="/css/nav-footer.css">  
+    <link rel="stylesheet" href="/css/add-question.css">
+    <link rel="stylesheet" href="/css/keyboard.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <nav>
+
+        <a href="/" class="logo">
+            <h1 class="hide-lg">lOGO</h1>
+            <i class=" hide-sm bi bi-house-door-fill"></i>
+        </a>
+        <ul class="nav-links">
+
+            <li><a class="hide-sm" href="/add-questions"><i class="bi bi-file-earmark-plus"></i></a></li>
+            <li><a class="hide-sm" href="/about"><i class="bi bi-file-person"></i></a></li>
+            <li><a class="hide-sm" href="/Database"><i class="bi bi-database"></i></a></li>
+
+
+            <li><a class="hide-lg" href="/add-questions">ADD QUESTION</a></li>
+            <li><a class="hide-lg" href="/about">ABOUT US</a></li>
+            <li><a class="hide-lg" href="/Database">DATABASE</a></li>
+        </ul>
+
+    </nav>
+
+        <h1 class="hide-sm disc">View on Desktop</h1>
+
+    <div class="container">
+        <form action="/add-questions" method="POST" enctype="multipart/form-data">
+            <!-- <div class="title large">ENTER A QUESTION</div> -->
+           
+
+
+            <input class="hide" type="text" name="question" id="question-input">
+            <!-- <span id="math-field"></span> -->
+
+            <p>Type math here:
+                <span id="math-field" maxlength="20"></span>
+        </p>
+      
+
+        
+            <div id="keyboard">
+              <div class="btn-group" role="group" aria-label="math functions">
+                <button type="button" class="btn-math btn-default" onClick='input("\\sqrt")'>√</button>
+                <button type="button" class="btn-math btn-default" onClick='input("\\frac")'>/</button>
+                <button type="button" class="btn-math btn-default" onClick='input("\Pi")'>Pi</button>
+                <button type="button" class="btn-math btn-default" onClick='input("\dagger")'>†</button>
+                <button type="button" class="btn-math btn-default" onClick='input("\alpha")'>α</button>
+                <button type="button" class="btn-math btn-default" onClick='input("\gamma")'>γ</button>
+                <!-- <button type="button" class="btn-math btn-default" onclick="input('\\log')">log</button> -->
+                <button type="button" class="btn-math btn-default" onclick="input('\\degree')">°</button>
+                <button type="button" class="btn-math btn-default" onclick="input('\\int')">∫</button>
+                <button type="button" class="btn-math btn-default" onclick="input('^')">^y</button>
+                <button type="button" class="btn-math btn-default" onclick="input('_')">_y</button>
+            </div>
+            <!-- <button type="button" class="btn" id="save-button" >SAVE</button> -->
+            </div>
+
+         
+            <!-- <div class="title large">SELECT DIFFICULTY LEVEL</div> -->
+            <!-- <div id="equation-editor"></div> -->
+
+            <div class="options-col">
+                <div class="options-row">
+                    <select name="Dlevel" id="Difficulty" >
+                        <option value="Easy">Easy</option>
+                        <option value="Moderate">Moderate</option>
+                        <option value="Difficult">Difficult</option>
+                      </select>
+        
+                      <select name="Clevel" id="Cognitive" >
+                        <option value="Knowledge">Knowledge</option>
+                        <option value="Comprehension">Comprehension</option>
+                        <option value="Application">Application</option>
+                        <option value="Analysis">Analysis</option>
+                        <option value="Synthesis">Synthesis</option>
+                      </select>
+                </div>
+    
+                <div class="options-row">
+                    <input placeholder="Section"  name="section" id="Section" type="text">
+        
+                      <select name="mark" id="Mark" >
+                        <option value="0">Mark</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                      </select>
+                </div>
+            </div>
+
+
+
+
+            
+            <div class="options-col">
+                <div class="options-row">
+                    <label for="img">Image:</label>
+                    <input type="checkbox" name="img" id="img" value="true">
+
+                    <label class="table-label" for="table">
+                        <div>Table:</div>
+                        <input placeholder="row" class="table-row-inp" type="number" name="row" id="t-row">
+                        <input placeholder="col" class="table-col-inp" type="number" name="col" id="t-col">
+                    </label>
+                    <input type="checkbox" name="table" id="table" value="true">
+                </div>
+            </div>
+
+
+            <div class="options-row-table">
+                <div id="table-wrap" class="table-wrapper"></div>
+                
+                <label for="image">
+                    <input name="image" id="image" type="file">
+                </label>
+            </div>
+
+            <input class="hide" id="table-data" name="tableData" type="text">
+
+            <div class="options">
+                <input name="opta" placeholder="option (a)" type="text" class="option">
+                <input name="optb" placeholder="option (b)" type="text" class="option">
+                <input name="optc" placeholder="option (c)" type="text" class="option">
+                <input name="optd" placeholder="option (d)" type="text" class="option">
+            </div>
+
+            <select name="space" id="space" >
+                <option value="0">MCQ</option>
+                <option value="1">1 line</option>
+                <option value="2">2 lines</option>
+                <option value="3">3 lines</option>
+                <option value="4">4 lines</option>
+                <option value="5">5 lines</option>
+                <option value="6">6 lines</option>
+                <option value="7">7 lines</option>
+                <option value="8">8 lines</option>
+                <option value="9">9 lines</option>
+                <option value="10">10 lines</option>
+                <option value="11">11 lines</option>
+                <option value="12">12 lines</option>
+                <option value="13">13 lines</option>
+                <option value="14">14 lines</option>
+                <option value="15">15 lines</option>
+              </select>
+            
+            <hr>
+
+
+
+
+            <button class="btn" type="submit">ADD</button>  
+        </form>
+    </div>
+
+
+
+    <footer>
+        <!-- <div class="nav-buttons">
+            <a href="/" class="nav-btn"></a>
+            <a href="/generate" class="nav-btn"></a>
+            <a href="/about" class="nav-btn"></a>
+        </div>
+        <div class="text">ONLINE SERVICE</div> -->
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+    
+
+    
+
+    <script src="/javascript/keyboard.js"></script>
+    <script src="/javascript/add.js"></script>
+    
+</body>
+</html>
