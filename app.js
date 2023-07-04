@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 
 
 
-
+  //.env variables
   const PORT = process.env.PORT;
   const Pass_Key = process.env.PASS_KEY;
   const user_id = process.env.USER_ID;
