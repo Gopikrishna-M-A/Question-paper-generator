@@ -316,16 +316,17 @@
               <div class="table-div">
 
                 <% if (question.tableData && question.tableData.length> 0) { %>
+                  <% const tableDataArray = JSON.parse(question.tableData); %>
                   <table class="table">
                     <thead>
                       <tr>
-                        <% Object.keys(question.tableData[0]).forEach(key=> { %>
+                        <% Object.keys(tableDataArray[0]).forEach(key=> { %>
                           <th contenteditable="true"> <%= key %> </th>
                         <% }); %>
                       </tr>
                     </thead>
                     <tbody>
-                      <% question.tableData.forEach(obj=> { %>
+                      <% tableDataArray.forEach(obj=> { %>
                         <tr>
                           <% Object.values(obj).forEach(value=> { %>
                             <td contenteditable="true"> <%= value %> </td>

@@ -142,91 +142,73 @@ const Paper = new mongoose.model('Paper',paperSchema)
     app.get("/generate",(req,res)=>{
         res.render("generate")
     })
-    app.post("/generate",(req,res)=>{
 
-        const questions = JSON.parse(req.body.data)
-        const noOfQuestions = req.body.number
+    function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      // console.log(array);
+      return array;
+    }
 
 
-            if (questions && questions.length > 0) {
-              const questionPromises = questions.map(questionObj => {
-                const { section, mark, level, Cognitive } = questionObj;
-                
+    app.post("/generate", async (req, res) => {
+      const criteriaArray = JSON.parse(req.body.data)
+      const noOfQuestions = req.body.number
+
+      // Fetch all questions from the database
+      Question.find({})
+        .then((allQuestions) => {
+          const view = shuffleArray([...allQuestions]) // Create a copy of all questions as the view
+          const matchedQuestions = []
+
+          // Iterate through the criteria array
+          for (const criterion of criteriaArray) {
+            const { section, mark, level, Cognitive } = criterion
             
-                const query = {
-                  section,
-                  mark: parseInt(mark),
-                  Dlevel: level,
-                  Clevel: Cognitive
-                };
-            
-                return Question.aggregate([
-                  { $match: query },
-                  { $sample: { size: 1 } }
-                ]).exec();
-              });
-            
-              Promise.all(questionPromises)
-                .then(results => {
-                  const filteredQuestions = results.filter(question => question.length > 0);
-            
-                  if (filteredQuestions.length === 0) {
-                    console.log('No matching questions found.');
-                    res.send("No matching questions found.")
-                    return;
-                  }
-            
-            
-                  const questionIds = filteredQuestions.map(question => question[0]._id.toString());
-                  const uniqueQuestionIds = [...new Set(questionIds)];
-            
-            
-                  const updatedPaperData = {
-                    questions: uniqueQuestionIds,
-                    noOfQuestions
-                  };
-                  const paper = new Paper(updatedPaperData);
-            
-                  paper.save()
-                    .then(savedPaper => {
-            
-                      const questionPromises = uniqueQuestionIds.map(questionId =>
-                        Question.findById(questionId)
-                          .then(question => {
-                            if (question && question.tableData) {
-                              question.tableData = JSON.parse(question.tableData);
-                            }
-                            return question;
-                          })
-                      );
-            
-                      Promise.all(questionPromises)
-                        .then(questions => {
-                          res.render("question-paper", { questions });
-                        })
-                        .catch(error => {
-                          console.error('Error fetching questions:', error);
-                        });
-                    })
-                    .catch(error => {
-                      console.error('Error saving paper:', error);
-                    });
-                })
-                .catch(error => {
-                  console.error('Error fetching questions:', error);
-                });
+
+            // Find the first question that matches the criterion in the view
+            const matchedQuestion = view.find((question) => {
+              return (
+                question.section === section &&
+                question.mark == mark &&
+                question.Dlevel === level &&
+                question.Clevel === Cognitive
+              )
+            })
+
+            if (matchedQuestion) {
+              matchedQuestions.push(matchedQuestion)
+              // Remove the matched question from the view
+              const index = view.indexOf(matchedQuestion)
+              if (index > -1) {
+                view.splice(index, 1)
+              }
             } else {
-              console.log('No questions provided in the paperData object.');
+              // If no match is found for a criterion, alert an error
+              return res
+                .status(404)
+                .json({
+                  message: "No matching record found for the criterion ",
+                  section,
+                  mark,
+                  level,
+                  Cognitive
+                })
             }
-            
-            
-            
-            
+          }
 
-
-
-
+          res.render('question-paper',{questions:matchedQuestions})
+        })
+        .catch((error) => {
+          console.error("Error retrieving questions:", error)
+          res.status(500).json({ error: "Internal server error" })
+        })
     })
+
+
+
     app.get("/add-questions",(req,res)=>{
         res.render("add-question")
     })
