@@ -1,13 +1,67 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
 
 * {
-    font-family: 'PT Serif', serif !important;
     font-style: normal !important;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    /* border: 1px solid green; */
+    color: #3a3665;
+}
+.hide{
+    display: none;
+}
+a{
+    text-decoration: none;
+    color: rgb(17, 6, 48);
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
 }
 
-body {
-    padding: 30px;
-    background-color: #dedcf9;
+
+.logo{
+    width: 100px;
+}
+.logo h1{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #07051f;
+    cursor: pointer;
+}
+.accent{
+    color: #a69ef0;
+
+}
+.nav-links{
+    width: 60%;
+    list-style-type: none;
+    display: flex;
+    justify-content: end;
+    gap: 70px;
+    align-items: center;
+}
+.nav-links li{
+    font-weight: 500;
+    transition: all .2s ease-in-out;
+    text-align: end;
+    cursor: pointer;    
+}
+.nav-links li a{
+    white-space: nowrap; 
+}
+
+body{
+    height: 100vh;
+    background-color: #efedfc;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 30px 200px;
 }
 
 .math-field {
@@ -34,55 +88,79 @@ body {
     background-color: transparent;
 }
 
-@media (width<576px) {
-    body{
-        height: 100%;
-        display: block;
-        overflow: auto;
-        background-repeat: no-repeat;
-        background-color: #dedcf9;
-        background-size: cover;
-        padding: 10px 10px 10px 10px;
-    }
-        footer{
-            display: none;
-        }
-        .hide-lg{
-            display: none;
-        }
+
+.action-btn:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 25px 20px -20px #bab4f3;
+}
+li:hover{
+    transform: translateY(-5px);
+    box-shadow: 0px 25px 20px -20px #bab4f3;
+}
+.nav-btn:hover{
+    background-color: #a69ef0;
+    cursor: pointer;
+}
+
+
+
+
+@media (width<1200px) {
     
-        .hide-sm{
-            display: block;
-        }
-        .nav-links{
-            width: 50%;
-            flex-direction: row-reverse;
-            justify-content: space-between;
-            align-items: center;
-            gap:20px;
-        }
-        .nav-links li{
-            font-weight: 500;
-            text-align: end;
-            /* width: ; */
-            transition: all .2s ease-in-out;
-            text-align: end;
-            cursor: pointer;
-        }
-        i{
-            font-size: 20px;
-            color: #4b4585;
-        }
-        .hero-text{
-            width: 100%;
-        }
-        li:hover{
-            transform: translateY(-5px);
-            box-shadow: 0px 25px 20px -20px #bab4f3;
-        }
-        .mq-root-block {
-            font-size: 12px;
-        }
+}
+
+@media (width<992px) {
+
+}
+
+@media (width<768px) {
+ 
+}
+
+@media (width<576px) {
+body{
+    height: 100%;
+    padding: 10px 10px 10px 10px;
+}
+    footer{
+        display: none;
+    }
+    .hide-lg{
+        display: none;
+    }
+
+    .hide-sm{
+        display: block;
+    }
+    .nav-links{
+        width: 50%;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        gap:20px;
+    }
+    .nav-links li{
+        font-weight: 500;
+        text-align: end;
+        /* width: ; */
+        transition: all .2s ease-in-out;
+        text-align: end;
+        cursor: pointer;
+    }
+    i{
+        font-size: 20px;
+        color: #4b4585;
+    }
+    .hero-text{
+        width: 100%;
+    }
+    li:hover{
+        transform: translateY(-5px);
+        box-shadow: 0px 25px 20px -20px #bab4f3;
+    }
+    .title.large {
+        font-size: 40px;
+    }
 
 
 }
