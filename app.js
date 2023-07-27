@@ -34,7 +34,8 @@ const storage = multer.diskStorage({
   
   
   
-  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+  // const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+  const URL = "mongodb://localhost:27017/Questions";
 
 mongoose.set("strictQuery", false);
 mongoose.connect(URL, { useNewUrlParser: true });
@@ -145,56 +146,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
 
         const questions = JSON.parse(req.body.data)
         const noOfQuestions = req.body.number
-        console.log("from form:",questions);
-
-              
-            // if (questions && questions.length > 0) {
-            //     const sectionValues = questions.map(q => q.section);
-            //     const markValues = questions.map(q => q.mark);
-            //     const levelValues = questions.map(q => q.level);
-            //     const cognitiveValues = questions.map(q => q.Cognitive);
-              
-            //     Question.find({
-            //       section: { $in: sectionValues },
-            //       mark: { $in: markValues },
-            //       Dlevel: { $in: levelValues },
-            //       Clevel: { $in: cognitiveValues }
-            //     })
-            //     .then(questions => {
-            //       console.log('Matching questions:', questions);
-            //       const questionIds = questions.map(q => q._id);
-
-            //       const updatedPaperData = {
-            //         questions: questionIds,
-            //         noOfQuestions
-            //       };
-            //       const paper = new Paper(updatedPaperData);
-
-            //       paper.save()
-            //         .then(savedPaper => {
-            //           console.log('Paper saved:', savedPaper);
-            //           questions.forEach(question => {
-            //             if (question.tableData) {
-            //               question.tableData = JSON.parse(question.tableData);
-            //             }
-            //           })  
-            //           res.render("question-paper",{questions})
-            //         })
-            //         .catch(error => {
-            //           console.error('Error saving paper:', error);
-            //         });
-                  
-            //     })
-            //     .catch(error => {   
-            //       console.error('Error fetching questions:', error);
-            //     });
-            //   } else {
-            //     console.log('No questions provided in the paperData object.');
-            //   }
-
-
-
-
 
 
             if (questions && questions.length > 0) {
@@ -225,12 +176,10 @@ const Paper = new mongoose.model('Paper',paperSchema)
                     return;
                   }
             
-                  console.log('Matching questions:', filteredQuestions);
             
                   const questionIds = filteredQuestions.map(question => question[0]._id.toString());
                   const uniqueQuestionIds = [...new Set(questionIds)];
             
-                  console.log('Unique question IDs:', uniqueQuestionIds);
             
                   const updatedPaperData = {
                     questions: uniqueQuestionIds,
@@ -240,7 +189,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
             
                   paper.save()
                     .then(savedPaper => {
-                      console.log('Paper saved:', savedPaper);
             
                       const questionPromises = uniqueQuestionIds.map(questionId =>
                         Question.findById(questionId)
@@ -254,7 +202,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
             
                       Promise.all(questionPromises)
                         .then(questions => {
-                          console.log('Questions:', questions);
                           res.render("question-paper", { questions });
                         })
                         .catch(error => {
@@ -303,7 +250,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
           space
         } = req.body;   
 
-          console.log(question);
 
 
         if(img){
@@ -333,7 +279,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
                 res.redirect("/add-questions")
             })
             .catch((error) => {
-              
                 console.error(error);
             });    
         }else {
@@ -376,7 +321,6 @@ const Paper = new mongoose.model('Paper',paperSchema)
       Question.find()
         .sort({ section: 1 }) // Sort by section number in ascending order (change to -1 for descending order)
         .then(questions => {
-          console.log("questions", questions);
           res.render("database", { questions });
         })
         .catch(error => {
@@ -404,11 +348,23 @@ app.post("/verify",(req,res)=>{
 })
 
 
+
+
+
+
+
+
+
+
+
 app.listen(PORT||3000,(err)=>{
     if(err)
         console.log("err");
     else
         console.log("server started at port 3000");    
 })
+
+
+
 
 

@@ -1,176 +1,425 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
-    <link rel="stylesheet" href="/css/question-paper.css">
-    
 
-    <title>Document</title>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.css">
+  <link rel="stylesheet" href="/css/question-paper.css">
+
+
+  <title>Question paper</title>
 
 </head>
+
 <body>
-       <div class="container">
-        <div id="a4"   class="a4-wrapper">
+  <!-- ------------------------------------------------------------------------------------------------------------- -->
 
-            <div class="parent">
-                <div class="logo">
-                    <img class="logo-img" src="/images/logo3.png" alt="">
-                </div>
-                <div class="university">University of Technology and Applied Sciences - Muscat</div>
-                <div class="department">DEPARTMENT: Information Technology</div>
-                <div class="exam">
-                    <h3 class="h-tag">Final Examination (Theory)</h3>
-                    <h4 class="h-tag">Semester: 2   A. Y:   2022 / 2023</h4>
-                </div>
-                <div class="details">
-                    <div class="detail">Date: 31-05-2023</div>
-                    <div class="detail">Time:  02.30 PM- 05.00 PM</div>
-                    <div class="detail">Version B</div>
-                </div>
-                <div class="student-name">Student Name</div>
-                <div class="student-id">Student ID</div>
-                <div class="specialization">Specialization</div>
-                <div class="invi-sign">Invigilator Signature</div>
-                <div class="level">Level</div>
-                <div class="course-name">Course Name</div>
-                <div class="course-code">Course Code</div>
-                <div class="section">Section</div>
-                <div class="Advanced-diploma">Advanced Diploma</div>
-                <div class="probablity-stas">Probability and  Statistics</div>
-                <div class="stat3101">STAT3101</div>
-                <div class="blank"></div>
-                <div class="blank2"></div>
-                <div class="blank3"></div>
-                <div class="blank4"></div>
-                <div class="blank5"></div>
-              </div>
-
-
-              <div class="instructions">
-                <h4>INSTRUCTIONS TO STUDENTS:</h4>
-                <ol>
-                    <li>Do not open this question paper until told to do so by the invigilator.</li>
-                    <li>This exam paper consists of (12) pages including the front page and the statistical table.</li>
-                    <li>Time allowed is 1 hour 30 minutes.</li>
-                    <li>Cheating / malpractice in any form will be dealt as an offence. </li>
-                    <li>Use only Black or Blue pen for answering the questions. However, pencils can be used for diagrams, problem solving and program writing purposes only.   </li>
-                    <li>Exchanging or sharing of resources is prohibited.</li>
-                    <li>Use of mobile phones, Bluetooth, smart watches, dictionary, or any translator gadget in the examination hall is not allowed.</li>
-                    <li>Non programmable calculators are ☑ allowed/   not allowed to be used.</li>
-                </ol>
-              </div>
-
-              <div class="marks">
-                <div class="section-">Section</div>
-                <div class="max-marks">Max. Marks</div>
-                <div class="obtained-marks">Obtained Marks</div>
-                <div class="A">A</div>
-                <div class="B">B</div>
-                <div class="ten">10</div>
-                <div class="twenty">20</div>
-                <div class="blank1"></div>
-                <div class="blank2"></div>
-                <div class="sub-total-marks">Sub-Total Marks</div>
-                <div class="grand-total-marks">Grand Total Marks</div>
-                <div class="black3"></div>
-                <div class="blank4"></div>
-                <div class="thirty">30</div>
-                <div class="blank5"></div>
-              </div>
-
-
-
-
-            <ol class="questtions-wrapper">
-
-              <% questions.forEach((question, index) => { %>
-                <div class="question-div">
-                  <li class="question">
-                    <span class="math-field" data-val="<%= question.question %>"><%= question.question %></span>
-                  </li>
-                  <div id="id-<%= index %>"></div>
-       
-
-                  
-         
-                    <img class="questionImg" src="<%= question.imageSrc %>" alt="">
-                    
-
-                    
-
-                        <% if (question.tableData && question.tableData.length > 0) { %>
-                          <table>
-                            <thead>
-                              <tr>
-                                <% Object.keys(question.tableData[0]).forEach(key => { %>
-                                  <th><%= key %></th>
-                                <% }); %>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <% question.tableData.forEach(obj => { %>
-                                <tr>
-                                  <% Object.values(obj).forEach(value => { %>
-                                    <td><%= value %></td>
-                                  <% }); %>
-                                </tr>
-                              <% }); %>
-                            </tbody>
-                          </table>
-                        <% } %>
-                      
-                    
-                        <% if (question.opta) { %>
-                            <div class="options option-a">a. <%= question.opta %></div>
-                          <% } %>
-                          <% if (question.optb) { %>
-                            <div class="options">b. <%= question.optb %></div>
-                          <% } %>
-                          <% if (question.optc) { %>
-                            <div class="options">c. <%= question.optc %></div>
-                          <% } %>
-                          <% if (question.optd) { %>
-                            <div class="options">d. <%= question.optd %></div>    
-                          <% } %>
-                    
-                
-                          <% for( let i = 0; i < question.space; i++ ) { %>
-                                <hr>
-                          <% } %> 
-
-                <hr>
-
-                </div>
-                    
-
-
-                <%    }) %>
-
-               
-
-               
-            </ol>
-
+  <div class="container" id="summary">
+  
+  
+    <div class="first-page">
+      <div class="parent">
+        <div class="logo">
+          <img class="logo-img" src="/images/logo3.png" alt="">
         </div>
-        
+        <div class="university">University of Technology and Applied Sciences - Muscat</div>
+        <div contenteditable="true" class="department">DEPARTMENT: Information Technology</div>
+        <div class="exam">
+          <h3 class="h-tag">Final Examination (Theory)</h3>
+          <h4 class="h-tag">Semester: 2 A. Y: 2022 / 2023</h4>
+        </div>
+        <div class="details">
+          <div class="detail">Date: 31-05-2023</div>
+          <div class="detail">Time: 02.30 PM- 05.00 PM</div>
+          <div class="detail">Version B</div>
+        </div>
+        <div class="student-name">Student Name</div>
+        <div class="student-id">Student ID</div>
+        <div class="specialization">Specialization</div>
+        <div class="invi-sign">Invigilator Signature</div>
+        <div class="level">Level</div>
+        <div class="course-name">Course Name</div>
+        <div class="course-code">Course Code</div>
+        <div class="section">Section</div>
+        <div class="Advanced-diploma">Advanced Diploma</div>
+        <div class="probablity-stas">Probability and Statistics</div>
+        <div class="stat3101">STAT3101</div>
+        <div class="blank"></div>
+        <div class="blank2"></div>
+        <div class="blank3"></div>
+        <div class="blank4"></div>
+        <div class="blank5"></div>
+      </div>
+  
+  
+      <div class="instructions">
+        <h4>INSTRUCTIONS TO STUDENTS:</h4>
+        <ol>
+          <li>Do not open this question paper until told to do so by the invigilator.</li>
+          <li>This exam paper consists of (12) pages including the front page and the statistical table.</li>
+          <li>Time allowed is 1 hour 30 minutes.</li>
+          <li>Cheating / malpractice in any form will be dealt as an offence. </li>
+          <li>Use only Black or Blue pen for answering the questions. However, pencils can be used for diagrams, problem
+            solving and program writing purposes only. </li>
+          <li>Exchanging or sharing of resources is prohibited.</li>
+          <li>Use of mobile phones, Bluetooth, smart watches, dictionary, or any translator gadget in the examination
+            hall is not allowed.</li>
+          <li>Non programmable calculators are ☑ allowed/   not allowed to be used.</li>
+        </ol>
+      </div>
+  
+      <div class="marks">
+        <div  class="section-">Section</div>
+        <div  class="max-marks">Max. Marks</div>
+        <div  class="obtained-marks">Obtained Marks</div>
+        <div  class="A">A</div>
+        <div  class="B">B</div>
+        <div  class="ten"></div>
+        <div  class="twenty">20</div>
+        <div  class="blank1"></div>
+        <div  class="blank2"></div>
+        <div  class="sub-total-marks">Sub-Total Marks</div>
+        <div  class="grand-total-marks">Grand Total Marks</div>
+        <div  class="black3"></div>
+        <div  class="blank4"></div>
+        <div  class="thirty">30</div>
+        <div  class="blank5"></div>
+        <div>abc</div>
+      </div>
+  
+      <div class="student-sec">
+        <div class="sec">
+          <div class="marker">First Marker :</div>
+          <div class="sign">Signature :</div>
+          <div class="Date">Date :</div>
+        </div>
+        <div class="sec">
+          <div class="marker">Second Marker :</div>
+          <div class="sign">Signature :</div>
+          <div class="Date">Date :</div>
+        </div>
+      </div>
+  
     </div>
-    <div class="bottom-sec">
-        <a href="/" class="btn">Go Back </a>
-        <button onclick="generatePdf()" class="btn">Download</button>
+    <div class="questions-page" id="pdf-content">
+      <div class="questtions-wrapper">
+  
+        <div class="question-box">
+          <div class="left-part">Sno</div>
+          <div class="middle-part first">Questions</div>
+          <div class="right-part">
+            <table class="question-spec">
+              <tr>
+                <td>Course Outcome</td>
+                <td>Difficulty level</td>
+                <td>Cognitive level</td>
+                <td>Section</td>
+                <td>Mark</td>
+                <td>No of Lines</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+  
+        <% questions.forEach((question, index)=> { %>
+          <div class="question-box">
+            <div class="left-part">
+              <div>
+                <%= index + 1 %>
+              </div>
+            </div>
+            <div class="middle-part">
+              <div class="question-div">
+  
+                <div class="question">
+                  <span class="math-field" data-val="<%= question.question %>">
+                    <%= question.question %>
+                  </span>
+                </div>
+                <div id="id-<%= index %>"></div>
+  
+  
+  
+  
+              </div>
+  
+            </div>
+            <div class="right-part">
+              <table class="question-spec">
+                <tr>
+                  <td>CO1</td>
+                  <td>
+                    <%= question.Dlevel %>
+                  </td>
+                  <td>
+                    <%= question.Clevel %>
+                  </td>
+                  <td>
+                    <%= question.section %>
+                  </td>
+                  <td>
+                    <%= question.mark %>
+                  </td>
+                  <td>
+                    <%= question.space %>
+                  </td>
+                </tr>
+              </table>
+            </div>
+  
+  
+          </div>
+  
+          <% }) %>
+  
+  
+  
+  
+      </div>
     </div>
-<!-- <script src="https://raw.githack.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>       -->
-<!-- <script src="https://unpkg.com/html-docx-js/dist/html-docx.js"></script> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.min.js"></script>
-<!-- <script src="/javascript/pdf.js"></script> -->
-<script src="/javascript/latex.js"></script>
+  
+  
+  
+  
+  
+  </div>
+
+
+
+<!-- ------------------------------------------------------------------------------------------------------------- -->
+
+
+
+<div class="container" id="a4">
+  
+  
+    <div class="first-page">
+      <div class="parent">
+        <div class="logo">
+          <img class="logo-img" src="/images/logo3.png" alt="">
+        </div>
+        <div class="university">University of Technology and Applied Sciences - Muscat</div>
+        <div contenteditable="true" class="department">DEPARTMENT: Information Technology</div>
+        <div class="exam">
+          <h3 contenteditable="true" class="h-tag">Final Examination (Theory)</h3>
+          <h4 contenteditable="true" class="h-tag">Semester: 2 A. Y: 2022 / 2023</h4>
+        </div>
+        <div class="details">
+          <div contenteditable="true" class="detail">Date: 31-05-2023</div>
+          <div contenteditable="true" class="detail">Time: 02.30 PM- 05.00 PM</div>
+          <div contenteditable="true" class="detail">Version B</div>
+        </div>
+        <div  class="student-name">Student Name</div>
+        <div  class="student-id">Student ID</div>
+        <div  class="specialization">Specialization</div>
+        <div  class="invi-sign">Invigilator Signature</div>
+        <div  class="level">Level</div>
+        <div  class="course-name">Course Name</div>
+        <div  class="course-code">Course Code</div>
+        <div  class="section">Section</div>
+        <div  contenteditable="true" class="Advanced-diploma">Advanced Diploma</div>
+        <div  contenteditable="true" class="probablity-stas">Probability and Statistics</div>
+        <div  contenteditable="true" class="stat3101">STAT3101</div>
+        <div  contenteditable="true" class="blank"></div>
+        <div  contenteditable="true" class="blank2"></div>
+        <div  contenteditable="true" class="blank3"></div>
+        <div  contenteditable="true" class="blank4"></div>
+        <div  contenteditable="true" class="blank5"></div>
+      </div>
+  
+  
+      <div class="instructions">
+        <h4>INSTRUCTIONS TO STUDENTS:</h4>
+        <ol>
+          <li>Do not open this question paper until told to do so by the invigilator.</li>
+          <li>This exam paper consists of (12) pages including the front page and the statistical table.</li>
+          <li>Time allowed is 1 hour 30 minutes.</li>
+          <li>Cheating / malpractice in any form will be dealt as an offence. </li>
+          <li>Use only Black or Blue pen for answering the questions. However, pencils can be used for diagrams, problem
+            solving and program writing purposes only. </li>
+          <li>Exchanging or sharing of resources is prohibited.</li>
+          <li>Use of mobile phones, Bluetooth, smart watches, dictionary, or any translator gadget in the examination
+            hall is not allowed.</li>
+          <li>Non programmable calculators are ☑ allowed/   not allowed to be used.</li>
+        </ol>
+      </div>
+  
+      <div class="marks">
+        <div  class="section-">Section</div>
+        <div  class="max-marks">Max. Marks</div>
+        <div  class="obtained-marks">Obtained Marks</div>
+        <div  contenteditable="true" class="A">A</div>
+        <div  contenteditable="true" class="B">B</div>
+        <div  contenteditable="true" class="ten">10</div>
+        <div  contenteditable="true" class="twenty">20</div>
+        <div  contenteditable="true" class="blank1"></div>
+        <div  contenteditable="true" class="blank2"></div>
+        <div  class="sub-total-marks">Sub-Total Marks</div>
+        <div  class="grand-total-marks">Grand Total Marks</div>
+        <div  contenteditable="true" class="black3"></div>
+        <div  contenteditable="true" class="blank4"></div>
+        <div  contenteditable="true" class="thirty">30</div>
+        <div  contenteditable="true" class="blank5"></div>
+      </div>
+
+      <div class="student-sec">
+        <div class="sec">
+          <div class="marker">First Marker :</div>
+          <div class="sign">Signature :</div>
+          <div class="Date">Date :</div>
+        </div>
+        <div class="sec">
+          <div class="marker">Second Marker :</div>
+          <div class="sign">Signature :</div>
+          <div class="Date">Date :</div>
+        </div>
+      </div>
+  
+    
+  
+    </div>
+    <div class="questions-page" id="qs-pdf-content">
+      <div class="questtions-wrapper">
+  
+      
+  
+        <% questions.forEach((question, index)=> { %>
+          <div class="qs-question-box">
+            <div class="qs-top-part">
+              <div>Question <%= index + 1 %></div>
+              <div class="qs-mark"><%= question.mark %> marks</div>
+            </div>
+            <div class="qs-middle-part">
+              <div class="question-div">
+  
+                <div class="question">
+                  <span class="math-field" data-val="<%= question.question %>">
+                    <%= question.question %>
+                  </span>
+                </div>
+                <div id="id-<%= index %>"></div>
+  
+              </div>
+
+              <div class="qs-itens">
+
+
+
+              <img class="questionImg" src="<%= question.imageSrc %>" alt="">
+
+
+
+
+                   <!-- table start -->
+              <div class="table-div">
+
+                <% if (question.tableData && question.tableData.length> 0) { %>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <% Object.keys(question.tableData[0]).forEach(key=> { %>
+                          <th contenteditable="true"> <%= key %> </th>
+                        <% }); %>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% question.tableData.forEach(obj=> { %>
+                        <tr>
+                          <% Object.values(obj).forEach(value=> { %>
+                            <td contenteditable="true"> <%= value %> </td>
+                          <% }); %>
+                        </tr>
+                      <% }); %>
+                    </tbody>
+                  </table>
+                  <% } %>
+              </div>
+              <!-- table start -->
+
+              </div>
+              
+             
+              
+
+             
+
+
+            </div>
+
+
+
+            <div class="qs-bottom-part">
+                    <!-- options start -->
+                
+                    <div class="options-container">
+
+                      <% if (question.opta) { %>
+                        <div contenteditable="true" class="options option-a">a. <%= question.opta %>
+                        </div>
+                      <% } %>
+
+                      <% if (question.optb) { %>
+                        <div contenteditable="true" class="options">b. <%= question.optb %>
+                        </div>
+                      <% } %>
+
+                      <% if (question.optc) { %>
+                        <div contenteditable="true" class="options">c. <%= question.optc %>
+                        </div>
+                      <% } %>
+
+                      <% if (question.optd) { %>
+                        <div contenteditable="true" class="options">d. <%= question.optd %>
+                        </div>
+                      <% } %>
+
+                    </div>
+                <!-- options end -->  
+            </div>
+            <!-- <div class="line-box"> -->
+            <% for (var i = 1; i <= question.space; i++) { %>
+                <div class="line"></div>
+            <% } %>           
+            <!-- </div> -->
+          
+          
+  
+          </div>
+  
+          <% }) %>
+  
+  
+  
+  
+      </div>
+    </div>
+  
+  
+  
+  
+  
+  </div>
+
+
+
+
+
+
+
+  <div class="bottom-sec">
+    <a href="/" class="btn">Go Back </a>
+    <button id="generate-btn" class="btn">Generate PDF</button>
+    <button id="summary-btn" class="btn">Summary</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.0/es5/tex-chtml.min.js"></script>
+  <script src="/javascript/html2pdf.bundle.min.js"></script>
+  <script src="/javascript/pdf.js"></script>
+  <script src="/javascript/latex.js"></script>
 </body>
+
 </html>
-
-
-
-

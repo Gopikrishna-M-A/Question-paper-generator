@@ -1,13 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'PT Serif', serif !important;
-    font-size: 10px !important;
-    font-weight: 300;
+    
+    /* font-family: 'PT Serif', serif; */
+    font-family: 'TeX Gyre Pagella', serif;
     /* border: 1px solid green; */
 }
 
@@ -19,16 +19,21 @@ a{
     text-decoration: none;
 }
 body{
+    padding: 20px 400px;
     height: 100vh;
     overflow: hidden;
-    background-color: #efedfc;
-    padding-top: 10px;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 10px;
 }
+
+.first-page{
+    background-color: #fff;
+}
+
 
 .parent *{
     border-top: 1px solid black;
@@ -39,14 +44,17 @@ body{
     padding: 0px 5px;
 }
 .container{
-    width: 95vw;
-    max-width: 500px;
+
+    width: 100%;
     aspect-ratio: 7/9.5 ;
-    font-size: 12px;
+    /* background-color: #efedfc; */
     gap: 10px;
     overflow-y: auto;
 }
 
+.container::-webkit-scrollbar {
+    display: none;
+  }
 .a4-wrapper{
     box-shadow: 25px 0 20px -20px #dfdcf9, -25px 0 20px -20px #dfdcf9;
     width: 95vw;
@@ -132,7 +140,7 @@ body{
     width: 100%;
     display: flex;
     padding: 0 10px;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 
 }
@@ -160,9 +168,10 @@ body{
     justify-content: center;
 }
 .detail{
+    height: 100%;
     border: none;
     border-left: 1px solid black;
-    padding: 5px 2px ;
+    padding: 5px 10px ;
 }
 .detail:first-child{
     border: none;
@@ -177,13 +186,14 @@ body{
     align-items: center;
 }
 .questtions-wrapper{
-    margin-top: 20px;
+    background-color: #fff;
+    /* margin-top: 20px; */
     /* padding: 30px 0 0 30px ; */
     width: 100%;
     font-weight: 200;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    /* gap: 6px; */
 }
 
 .btn{
@@ -277,10 +287,23 @@ table {
 }
 
 hr{
-    border: .1px solid rgb(184, 184, 184);
+    border: .1px solid rgb(0, 0, 0);
     margin-top: 15px;
 }
-
+.student-sec{
+    margin-top: 20px;
+    display: flex;
+    border: 1px solid black;
+    justify-content: space-between;
+    padding: 10px;
+}
+.student-sec .sec{
+    height: 100px;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .marks *{
     border-top: 1px solid black;
     border-right: 1px solid black;
@@ -288,7 +311,9 @@ hr{
     justify-content: center;
     align-items: center;
 }
-
+.marks > * {
+    padding: 5px; 
+}
 
 .marks {  display: grid;
     grid-template-columns: 1.6fr 0.7fr 0.7fr;
@@ -337,93 +362,120 @@ hr{
   .blank5 { grid-area: blank5; }
   
 
-
-
-
-
-@media print {
-     
-    .container{
-        position: absolute;
-        top: 0;
-        left: 0;
-        aspect-ratio: 7/10;
-        width: 100vw;
-        max-width: 100vw;
-        
-    }
- 
-    .a4-wrapper{
-        aspect-ratio: 7/10;
-        width: 100vw;
-        max-width: 100vw;
-        
-    }
-  
-  }
-
-
-
-
-
-.hide-sm{
-    display: none;
+.first-page{
+    padding-bottom: 130px;
 }
-
-
-
-
-@media (width<1200px) {
-    
+.table{
+    /* display: grid; */
+    width: 75%;
 }
-
-@media (width<992px) {
-
-}
-
-@media (width<768px) {
- 
-}
-
-@media (width<576px) {
-
-body{
-    height: 100%;
+.question{
+    font-weight: bold;
     display: flex;
-    overflow: auto;
-    background-color: white;
-    padding: 0;
+    align-items: center;
 }
-   
-    .hide-lg{
-        display: none;
-    }
 
-    .hide-sm{
-        display: block;
-    }
-  
-    .container{
-        width: 100%;
-        max-width: 500px;
-        aspect-ratio: 1/2 ;
-        font-size: 12px;
-        gap: 10px;
-        overflow-y: auto;
-        background-color: white;
-    }
-    
-    .a4-wrapper{
-        box-shadow: 25px 0 20px -20px #dfdcf9, -25px 0 20px -20px #dfdcf9;
-        width: 100%;
-        background-color: white;
-        aspect-ratio: 7/9.5 ;
-        padding: 5px;
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 10px;
-    
-    }
-  
 
+.question-box{
+    display: flex;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+.question-box:last-child{
+    border: 1px solid black;
+}
+
+.left-part{
+    width: 10%;
+    display: flex;
+    align-items:center ;
+    justify-content:center ;
+    border-right: 1px solid black;
+}
+.middle-part{
+    font-size: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    width: 60%;
+}
+.middle-part.first{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.right-part{
+    display: flex;
+    font-size: 10px;
+    width: 30%;
+    border-left: 1px solid black;
+}
+.question-spec{
+    width: 100%;
+    table-layout: fixed;
+}
+.question-spec td{
+    width: 16%;
+    word-wrap: break-word;
+    text-align: center;
+    padding: 3px;
+    border: none;
+    border-left: 1px solid black;
+
+}
+.question-spec td:first-child{
+    border:none;
+
+}
+
+.mq-non-leaf big{
+    padding: 4px;
+}
+
+.qs-question-box{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.qs-top-part{
+    padding: 5px 0 ;
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: bold;
+    border-top: 1px solid black;
+}
+.qs-middle-part{
+    border-top: 1px solid black;
+    margin-bottom: 10px;
+}
+.qs-bottom-part{
+    padding: 10px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+.qs-itens{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.line{
+    border-top: 1px dashed black;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.line-box{
+    display: flex;
+    flex-direction: column;
+
+}
+
+#summary{
+    position: absolute;
+    visibility: hidden;
+    z-index: -1;
 }
