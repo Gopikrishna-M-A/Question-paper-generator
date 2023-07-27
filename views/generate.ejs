@@ -50,17 +50,21 @@
         <div class="container">
         <form id="generateForm" action="/generate" method="post">
         <!-- <div class="title medium">CHOOSE A DIFFICULTY LEVEL</div> -->
-
+        <% if (typeof err !== 'undefined' && err) { %>
+            <p class="err-msg">No matching record found for the criterion !</p>
+        <% } %>
         <div id="addBtn" class="add"><span >Add</span></div>
         <div class="questions">
 
             <div class="question" id="question1">
                 <div class="number">1</div>
-                <select placeholder="section" class="section">
-                    <% Sections.forEach((section) => { %>
-                      <option value="<%= section %>"><%= section %></option>
-                    <% }); %>
-                  </select>
+                <% if (typeof Sections !== 'undefined' && Sections.length > 0) { %>
+                    <select placeholder="section" class="section">
+                        <% Sections.forEach((section) => { %>
+                            <option value="<%= section %>"><%= section %></option>
+                        <% }); %>
+                    </select>
+                <% } %>
                 <select name="mark" id="Mark" class="mark">
                     <option value="0">Mark</option>
                     <option value="1">1</option>

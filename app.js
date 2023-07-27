@@ -34,8 +34,8 @@ const storage = multer.diskStorage({
   
   
   
-  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
-  // const URL = "mongodb://localhost:27017/Questions";
+  // const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+  const URL = "mongodb://localhost:27017/Questions";
 
 mongoose.set("strictQuery", false);
 mongoose.connect(URL, { useNewUrlParser: true });
@@ -197,16 +197,9 @@ const Paper = new mongoose.model('Paper',paperSchema)
                 view.splice(index, 1)
               }
             } else {
+              res.render("generate",{err:true,section,mark,level,Cognitive})
               // If no match is found for a criterion, alert an error
-              return res
-                .status(404)
-                .json({
-                  message: "No matching record found for the criterion ",
-                  section,
-                  mark,
-                  level,
-                  Cognitive
-                })
+              
             }
           }
           // Create a new Paper and add the matchedQuestions and noOfQuestions

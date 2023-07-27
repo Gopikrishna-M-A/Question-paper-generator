@@ -235,3 +235,14 @@ body{
 .delete span:hover{
     color: #4b4585;
 }
+
+.err-msg{
+    text-align: center;
+    background-color: #fff2f0;
+    color: #ff4d4f;
+    border: 1px solid #ffccc7;
+    border-radius: 12px;
+    padding: 5px;
+    font-size: 12px;
+    width: 50%;
+}
