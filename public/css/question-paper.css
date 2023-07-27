@@ -493,4 +493,9 @@ hr{
     .container{
         height: 100%;
     }
+    .bottom-sec{
+       position: absolute;
+       bottom: 0;
+    }
+    
 }
