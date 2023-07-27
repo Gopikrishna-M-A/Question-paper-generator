@@ -198,10 +198,23 @@ const Paper = new mongoose.model('Paper',paperSchema)
                 })
             }
           }
+          // Create a new Paper and add the matchedQuestions and noOfQuestions
+          const newPaper = new Paper({
+            questions: matchedQuestions.map((question) => question._id),
+            noOfQuestions,
+          });
 
-          res.render('question-paper',{questions:matchedQuestions})
-        })
-        .catch((error) => {
+          // Save the new Paper to the database
+          newPaper
+            .save()
+            .then((savedPaper) => {
+              res.render('question-paper', { questions: matchedQuestions })
+            })
+            .catch((error) => {
+              console.error("Error saving the paper:", error)
+              res.status(500).json({ error: "Internal server error" })
+            })
+        }).catch((error) => {
           console.error("Error retrieving questions:", error)
           res.status(500).json({ error: "Internal server error" })
         })
