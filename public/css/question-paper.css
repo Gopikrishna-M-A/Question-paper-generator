@@ -479,3 +479,10 @@ hr{
     visibility: hidden;
     z-index: -1;
 }
+
+@media (width<576px) {
+    body{
+        font-size: 10px !important;
+        padding: 10px;
+    }
+}

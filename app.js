@@ -34,8 +34,8 @@ const storage = multer.diskStorage({
   
   
   
-  const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
-  // const URL = "mongodb://localhost:27017/Questions";
+  // const URL = `mongodb+srv://${user_id}:${encodeURIComponent(Pass_Key)}@cluster0.sbpkrhp.mongodb.net/`;
+  const URL = "mongodb://localhost:27017/Questions";
 
 mongoose.set("strictQuery", false);
 mongoose.connect(URL, { useNewUrlParser: true });
