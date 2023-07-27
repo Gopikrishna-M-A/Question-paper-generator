@@ -140,7 +140,18 @@ const Paper = new mongoose.model('Paper',paperSchema)
         res.render("home")
     })
     app.get("/generate",(req,res)=>{
-        res.render("generate")
+      
+      Question.distinct('section')
+      .exec()
+      .then((Sections) => {
+        res.render("generate",{Sections})
+      })
+      .catch((err) => {
+        console.error('Error fetching unique sections:', err);
+        // Handle the error if needed
+      });
+
+
     })
 
     function shuffleArray(array) {

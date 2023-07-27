@@ -56,7 +56,11 @@
 
             <div class="question" id="question1">
                 <div class="number">1</div>
-                <input placeholder="section" type="text" class="section">
+                <select placeholder="section" class="section">
+                    <% Sections.forEach((section) => { %>
+                      <option value="<%= section %>"><%= section %></option>
+                    <% }); %>
+                  </select>
                 <select name="mark" id="Mark" class="mark">
                     <option value="0">Mark</option>
                     <option value="1">1</option>

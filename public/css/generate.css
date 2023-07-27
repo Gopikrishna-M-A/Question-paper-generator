@@ -87,7 +87,7 @@ body{
     height: 30px;
     display: flex;
     background-color: #fff;
-    color: #a69ef0;
+    color: #4b4585;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
@@ -225,4 +225,13 @@ body{
         padding: 0;
     }
 
+}
+
+.delete span{   
+    color: #665fa9;
+    transition: all .2s ease-in-out;
+}
+
+.delete span:hover{
+    color: #4b4585;
 }

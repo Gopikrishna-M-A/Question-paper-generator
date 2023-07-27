@@ -1,7 +1,9 @@
 const addBtn = document.getElementById("addBtn")
 const questionsDiv = document.querySelector('.questions');
 let questionCount = 1
-
+document.addEventListener('DOMContentLoaded', () => {
+  addDeleteEventListeners(); // Call the function once when the document is loaded
+});
 addBtn.addEventListener("click",(e)=>{
     const questionTemplate = document.querySelector('.question')
 
@@ -18,6 +20,7 @@ addBtn.addEventListener("click",(e)=>{
 
     questionsDiv.appendChild(newQuestion)
     questionCount++
+    addDeleteEventListeners();
 })
 
 
@@ -58,3 +61,20 @@ document.getElementById('submitBtn').addEventListener('click', (event)=>{
 
   });
   
+ 
+
+
+
+    function addDeleteEventListeners() {
+      const deleteIcons = document.getElementsByClassName('delete');
+      for (let i = 0; i < deleteIcons.length; i++) {
+        deleteIcons[i].addEventListener('click', (event) => {
+          const questionElement = event.target.closest('.question');
+          const remainingQuestions = document.querySelectorAll('.question');
+          if (remainingQuestions.length === 1) {
+            return;
+          }
+          questionElement.remove();
+        });
+      }
+    }
